@@ -1,0 +1,11 @@
+# ninja log v5
+3	1061	6930710055491581	CMakeFiles/fourthAssignment.dir/ReadAndWriteFile.cpp.obj	ae712733cd05344
+43	2127	6930687655979845	CMakeFiles/fourthAssignment.dir/Model2.cpp.obj	4aaaee9399566d25
+3	971	6930711147612825	CMakeFiles/fourthAssignment.dir/ModelCommon.cpp.obj	60f3b009ae558f57
+4	2124	6930687655949920	CMakeFiles/fourthAssignment.dir/Model1.cpp.obj	1534997793c48b9a
+0	1002	6930160530658372	CMakeFiles/fourthAssignment.dir/main.cpp.obj	f156127d65b3c831
+971	1192	6930711149787278	fourthAssignment.exe	ca431bbe6da6261e
+3	979	6930711565726838	CMakeFiles/fourthAssignment.dir/ModelCommon.cpp.obj	60f3b009ae558f57
+980	1199	6930711567891031	fourthAssignment.exe	ca431bbe6da6261e
+3	883	6930716266493114	CMakeFiles/fourthAssignment.dir/ModelCommon.cpp.obj	60f3b009ae558f57
+883	1102	6930716268636620	fourthAssignment.exe	ca431bbe6da6261e

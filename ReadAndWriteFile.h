@@ -1,0 +1,11 @@
+#ifndef FOURTHASSIGNMENT_READANDWRITEFILE_H
+#define FOURTHASSIGNMENT_READANDWRITEFILE_H
+
+
+class ReadAndWriteFile {
+public:
+    void execute();
+};
+
+
+#endif //FOURTHASSIGNMENT_READANDWRITEFILE_H
