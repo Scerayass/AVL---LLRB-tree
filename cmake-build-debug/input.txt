@@ -11,8 +11,6 @@ printItem	music	bass
 insert	food	chips	45
 insert	food	chicken	60
 insert	sports	dumbbell	200
-insert	zusic	bass	200
-insert	kusic	bass	200
 remove	sports	dumbbell
 printAllItemsInCategory	sports
 insert	clothes	sweatshirt	100

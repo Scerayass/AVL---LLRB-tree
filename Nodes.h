@@ -2,7 +2,7 @@
 #define FOURTHASSIGNMENT_NODES_H
 
 struct secondaryNode;
-
+using namespace std;
 struct primaryNode{
     int height;
     std::string name;
@@ -10,6 +10,12 @@ struct primaryNode{
     primaryNode* right;
     secondaryNode* model1Secondary;
     secondaryNode* model2Secondary;
+
+    primaryNode(std::string nodeName){
+        left = NULL;
+        right = NULL;
+        name = nodeName;
+    }
 
 };
 struct secondaryNode{
@@ -20,6 +26,13 @@ struct secondaryNode{
     std::string name;
     secondaryNode* left;
     secondaryNode* right;
+    secondaryNode(string nodeName, int nodeData){
+        left = NULL;
+        right = NULL;
+        color = true;
+        name = nodeName;
+        data = nodeData;
+    }
 };
 
 

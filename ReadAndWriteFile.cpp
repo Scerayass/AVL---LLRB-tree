@@ -38,8 +38,9 @@ void ReadAndWriteFile::execute() {
             tempVector.push_back(innerString);
         }
         if( tempVector.at(0) == "insert"){
+
             modelCommon->insert(tempVector);
-            cout << "-----------" << endl;
+
         }else if(tempVector.at(0) == "remove"){
 
         }else if( tempVector.at(0) == "printAllItems"){
@@ -55,4 +56,6 @@ void ReadAndWriteFile::execute() {
         }
     }
     modelCommon->printAllItems(modelCommon->head);
+    modelCommon->printSecondaries(modelCommon->head->left->left->model2Secondary);
+    inputFile.close();
 }

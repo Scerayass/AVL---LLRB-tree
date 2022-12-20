@@ -9,7 +9,11 @@ using namespace std;
 class Model2 {
 public:
     primaryNode* head ;
-    void insert(primaryNode* head, secondaryNode* newNode);
+    secondaryNode* insert(primaryNode *head, secondaryNode * secondaryHead ,  string nodeName, int nodeData);
+    secondaryNode* rotateLeft(secondaryNode* node);
+    secondaryNode* rotateRight(secondaryNode* node);
+    void changeColors(secondaryNode* firstNode,secondaryNode* secondNode);
+
 };
 
 

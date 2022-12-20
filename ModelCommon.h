@@ -16,6 +16,7 @@ public:
     primaryNode* findBST(primaryNode* head,string name,string location,string type);
     primaryNode* remove(vector<string> vector);
     void printAllItems(primaryNode* head);
+    void printSecondaries(secondaryNode* node);
 };
 
 

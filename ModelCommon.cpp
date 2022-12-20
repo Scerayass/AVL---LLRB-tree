@@ -5,51 +5,50 @@
 
 using namespace std;
 
-
+primaryNode* tempNode;
 void ModelCommon::insert(vector<string> vector) {
 
     if(head == NULL){
 
-        head = new primaryNode();
-        secondaryNode* secondItem = new secondaryNode();
-        cout << vector.at(1) << endl;
-        head->name = vector.at(1);
-        head->left = NULL;
-        head->right =  NULL;
-        head->height = 1;
-        head->model1Secondary = secondItem;
-        head->model2Secondary = secondItem;
+        head = new primaryNode(vector.at(1));
+        secondaryNode* secondItem1 = new secondaryNode(vector.at(2),stoi(vector.at(3)));
+        secondaryNode* secondItem2 = new secondaryNode(vector.at(2),stoi(vector.at(3)));
 
-        secondItem->height = 1;
-        secondItem->left = NULL;
-        secondItem->right = NULL;
-        secondItem->name = vector.at(2);
-        secondItem->data = stoi(vector.at(3));
-        secondItem->color = true;
+        head->height = 1;
+        head->model1Secondary = secondItem1;
+        head->model2Secondary = secondItem2;
 
         model1->head = head;
         model2->head = head;
     }else{
+        findBST(head,vector.at(1),"r" , "insert");
 
-        primaryNode* temp = findBST(head,vector.at(1),"r" , "insert");
-        cout << temp->name << endl;
-        if(temp->model1Secondary != NULL && temp->model2Secondary != NULL){
-            model1->insert(temp,temp->model1Secondary);
-            model2->insert(temp,temp->model2Secondary);
+        //cout << tempNode->model1Secondary->name << endl;
+        //cout << vector.at(1)<< "--";
+
+        tempNode->model1Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
+        tempNode->model2Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
+        tempNode->model2Secondary->color = false;
+        //tempNode->model2Secondary = model2->insert(tempNode,tempNode->model2Secondary,vector.at(2),stoi(vector.at(3)));
+        /*
+        if(tempNode->model1Secondary != NULL && tempNode->model2Secondary != NULL){
+
+
+            tempNode->model1Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
+
+            tempNode->model2Secondary = model2->insert(tempNode,tempNode->model2Secondary,vector.at(2),stoi(vector.at(3)));
         }else{
-            secondaryNode* newSecondary = new secondaryNode();
-            newSecondary->name = vector.at(2);
-            newSecondary->data = stoi(vector.at(3));
-            newSecondary->left = NULL;
-            newSecondary->right = NULL;
-            newSecondary->color = true;
+            secondaryNode* newSecondary1 = new secondaryNode(vector.at(2),stoi(vector.at(3)));
+            secondaryNode* newSecondary2 = new secondaryNode(vector.at(2),stoi(vector.at(3)));
 
-            temp->model1Secondary = newSecondary;
-            temp->model2Secondary = newSecondary;
-        }
+            newSecondary1->height = 1;
+            newSecondary2->height = 1;
+
+            tempNode->model1Secondary = newSecondary1;
+            tempNode->model2Secondary = newSecondary2;
+        }*/
+        tempNode = NULL;
     }
-
-
 
 }
 
@@ -57,10 +56,26 @@ void ModelCommon::printAllItems(primaryNode *head) {
     if ( !head ){
         return;
     }
-    printAllItems(head->left);
+
     cout << head->name << endl;
+    printAllItems(head->left);
+
+
+
     printAllItems(head->right);
+
+
 }
+void ModelCommon::printSecondaries(secondaryNode* head){
+    if(!head){
+        return;
+    }
+    cout << head->name << " ";
+    printSecondaries(head->left);
+    printSecondaries(head->right);
+
+}
+
 
 primaryNode * ModelCommon::remove(vector<string> vector) {
 
@@ -69,13 +84,14 @@ primaryNode * ModelCommon::remove(vector<string> vector) {
 primaryNode *ModelCommon::findBST(primaryNode *head,string name,string location,string type) {
 
     if (head == NULL){
-        primaryNode* newNode = new primaryNode();
-        newNode->name = name;
-        newNode->left = NULL;
-        newNode->right = NULL;
+        primaryNode* newNode = new primaryNode(name);
+        newNode->model1Secondary = NULL;
+
+        tempNode = newNode;
         return newNode;
     }else if(head->name == name){
-        cout << "gelmiyon mu bura";
+
+        tempNode = head;
         return head;
     }
 
