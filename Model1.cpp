@@ -10,7 +10,6 @@ secondaryNode* Model1::insert(primaryNode *head, secondaryNode * secondaryHead ,
 
         return newNode;
     }else if(secondaryHead->name == nodeName){
-
         return secondaryHead;
     }
 
@@ -18,13 +17,10 @@ secondaryNode* Model1::insert(primaryNode *head, secondaryNode * secondaryHead ,
     const char* nameString = nodeName.c_str();
 
     if(lexicographical_compare(nodeString,nodeString+100,nameString,nameString+100)){
-
         secondaryHead->right = insert(head,secondaryHead->right , nodeName, nodeData);
     }else{
-
         secondaryHead->left =  insert(head,secondaryHead->left , nodeName, nodeData);
     }
-
     secondaryHead->height = 1 + maxHeight(secondaryHead->left,secondaryHead->right);
 
     int balanceValue = isBalanced(secondaryHead);
@@ -38,13 +34,10 @@ secondaryNode* Model1::insert(primaryNode *head, secondaryNode * secondaryHead ,
         rightNodeString = secondaryHead->right->name.c_str();
     }
 
-
     if(balanceValue > 1 && lexicographical_compare(nameString,nameString+100,leftNodeString,leftNodeString+100)){
-
         return rotateRight(secondaryHead);
     }
     if(balanceValue < -1 && lexicographical_compare(rightNodeString,rightNodeString+100,nameString,nameString+100)){
-
         return rotateLeft(secondaryHead);
     }
 
@@ -119,7 +112,7 @@ secondaryNode* Model1::rotateLeft(secondaryNode* node){
 }
 
 secondaryNode *Model1::remove(primaryNode *head, secondaryNode *secondaryHead, string nodeName) {
-    cout << nodeName << endl;
+
     if(secondaryHead == NULL){
         return NULL;
     }
@@ -155,10 +148,10 @@ secondaryNode *Model1::remove(primaryNode *head, secondaryNode *secondaryHead, s
         }
     }
     else if(lexicographical_compare(nodeString,nodeString+100,nameString,nameString+100)){
-        cout << nodeString << "   a" << lexicographical_compare(nodeString,nodeString+100,nameString,nameString+100)<< endl;
+
         secondaryHead->right = remove(head,secondaryHead->right,nodeName);
     }else if (lexicographical_compare(nameString,nameString+100,nodeString,nodeString+100)){
-        cout << nodeString<< "   b" <<  endl;
+
         secondaryHead->left = remove(head,secondaryHead->left,nodeName);
     }
     if(secondaryHead == NULL){

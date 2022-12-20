@@ -37,18 +37,32 @@ void ReadAndWriteFile::execute(string inputFileName,string outputFileName) {
         }else if(tempVector.at(0) == "remove"){
             modelCommon->remove(tempVector);
         }else if( tempVector.at(0) == "printAllItems"){
+
+            modelCommon->outputFile << "command:printAllItems\n{\n";
             modelCommon->printAllItems(modelCommon->head);
+            modelCommon->outputFile << "}\n";
+
         }else if( tempVector.at(0) == "printAllItemsInCategory"){
+
+            modelCommon->outputFile << "command:printAllItemsInCategory " << tempVector.at(1) << "\n{\n";
             modelCommon->printAllItemsInCategory(modelCommon->head,tempVector.at(1));
+            modelCommon->outputFile<< "}\n";
+
         }else if( tempVector.at(0) == "printItem"){
+
+            modelCommon->outputFile << "command:printItem\t" << tempVector.at(1) << "\t" << tempVector.at(2) << "\n{" ;
             modelCommon->printItem(modelCommon->head,tempVector.at(1),tempVector.at(2));
+            modelCommon->outputFile<< "}\n";
         }else if( tempVector.at(0) == "find"){
-            modelCommon->find(modelCommon->head , tempVector.at(1),tempVector.at(2));
+            modelCommon->outputFile << "command:find\t" << tempVector.at(1) << "\t" << tempVector.at(2) << "\n{" ;
+            modelCommon->printItem(modelCommon->head , tempVector.at(1),tempVector.at(2));
+            modelCommon->outputFile<< "}\n";
         }else if ( tempVector.at(0) == "updateData"){
             modelCommon->updateData(modelCommon->head,tempVector.at(1),tempVector.at(2), stoi(tempVector.at(3)));
         }
     }
-    modelCommon->printAllItems222(modelCommon->head);
+    //modelCommon->printAllItems222(modelCommon->head);
     //modelCommon->printSecondaries(modelCommon->head->left->left->model2Secondary);
+    modelCommon->outputFile.close();
     inputFile.close();
 }

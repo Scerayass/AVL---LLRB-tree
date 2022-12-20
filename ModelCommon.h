@@ -16,6 +16,7 @@ public:
     Model2* model2;
     void insert(vector<string> vector);
     primaryNode* findBST(primaryNode* head,string name);
+
     void remove(vector<string> vector);
     void printAllItems(primaryNode* head);
     void printAllItems222(primaryNode* head);
@@ -25,6 +26,7 @@ public:
     void printItem(primaryNode* head , string primaryString , string secondaryString);
     void find(primaryNode* head , string primaryString , string secondaryString);
     void updateData(primaryNode* head , string primaryString , string secondaryString , int updatedData);
+    secondaryNode* findSecondary(secondaryNode* head,string name);
 };
 
 
