@@ -7,12 +7,14 @@ using namespace std;
 
 class Model1 {
 public:
+
     primaryNode* head ;
     int maxHeight(secondaryNode *node1 , secondaryNode* node2);
     int isBalanced(secondaryNode* node);
     secondaryNode* rotateRight(secondaryNode* node);
     secondaryNode* rotateLeft(secondaryNode* node);
     secondaryNode* insert(primaryNode* head, secondaryNode* secondaryHead , string nodeName, int nodeData);
+    secondaryNode* remove(primaryNode* head , secondaryNode* secondaryHead,string nodeName);
 };
 
 

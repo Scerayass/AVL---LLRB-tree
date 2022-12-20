@@ -21,67 +21,45 @@ void ModelCommon::insert(vector<string> vector) {
         model1->head = head;
         model2->head = head;
     }else{
-        findBST(head,vector.at(1),"r" , "insert");
-
-        //cout << tempNode->model1Secondary->name << endl;
-        //cout << vector.at(1)<< "--";
+        findBST(head,vector.at(1));
 
         tempNode->model1Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
         tempNode->model2Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
         tempNode->model2Secondary->color = false;
-        //tempNode->model2Secondary = model2->insert(tempNode,tempNode->model2Secondary,vector.at(2),stoi(vector.at(3)));
-        /*
-        if(tempNode->model1Secondary != NULL && tempNode->model2Secondary != NULL){
 
-
-            tempNode->model1Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
-
-            tempNode->model2Secondary = model2->insert(tempNode,tempNode->model2Secondary,vector.at(2),stoi(vector.at(3)));
-        }else{
-            secondaryNode* newSecondary1 = new secondaryNode(vector.at(2),stoi(vector.at(3)));
-            secondaryNode* newSecondary2 = new secondaryNode(vector.at(2),stoi(vector.at(3)));
-
-            newSecondary1->height = 1;
-            newSecondary2->height = 1;
-
-            tempNode->model1Secondary = newSecondary1;
-            tempNode->model2Secondary = newSecondary2;
-        }*/
         tempNode = NULL;
     }
 
 }
 
-void ModelCommon::printAllItems(primaryNode *head) {
+void ModelCommon::printAllItems222(primaryNode *head) {
     if ( !head ){
         return;
     }
 
-    cout << head->name << endl;
+    cout << head->name << " --- ";
+    printSecondaries(head->model1Secondary);
+    cout << endl;
     printAllItems(head->left);
-
-
-
     printAllItems(head->right);
-
-
 }
-void ModelCommon::printSecondaries(secondaryNode* head){
+void ModelCommon::printSecondaries222(secondaryNode* head){
     if(!head){
         return;
     }
-    cout << head->name << " ";
+    cout << head->name << " , ";
     printSecondaries(head->left);
     printSecondaries(head->right);
 
 }
 
 
-primaryNode * ModelCommon::remove(vector<string> vector) {
-
+void ModelCommon::remove(vector<string> vector) {
+    findBST(head,vector.at(1));
+    tempNode->model1Secondary = model1->remove(tempNode,tempNode->model1Secondary,vector.at(2));
 }
 
-primaryNode *ModelCommon::findBST(primaryNode *head,string name,string location,string type) {
+primaryNode *ModelCommon::findBST(primaryNode *head,string name) {
 
     if (head == NULL){
         primaryNode* newNode = new primaryNode(name);
@@ -99,9 +77,29 @@ primaryNode *ModelCommon::findBST(primaryNode *head,string name,string location,
     const char* nameString = name.c_str();
 
     if(lexicographical_compare(nodeString,nodeString+100,nameString,nameString+100)){
-        head->right = findBST(head->right,name,"r" , "insert");
+        head->right = findBST(head->right,name);
     }else{
-        head->left =  findBST(head->left,name,"l" , "insert");
+        head->left =  findBST(head->left,name);
     }
     return head;
+}
+
+void ModelCommon::printAllItemsInCategory(primaryNode* head,string nodeString) {
+
+}
+
+void ModelCommon::updateData(primaryNode* head , string primaryString , string secondaryString , int updatedData) {
+
+
+}
+
+void ModelCommon::printItem(primaryNode* head , string primaryString , string secondaryString) {
+
+}
+
+void ModelCommon::find(primaryNode* head , string primaryString , string secondaryString) {
+
+}
+void ModelCommon::printAllItems(primaryNode *head) {
+
 }

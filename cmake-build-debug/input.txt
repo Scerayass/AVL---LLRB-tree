@@ -1,25 +1,23 @@
-insert	music	guitar	150
-insert	music	bass	200
-insert	food	fish	30
-insert	food	tacos	60
-insert	food	nachos	55
-insert	music	drum	250
-insert	music	piano	300
+insert	electronics	computer	15000
+insert	electronics	telephone	30000
+insert	electronics	refrigerator	13000
+insert	food	salad	30
+insert	food	pizza	80
+insert	food	cookie	35
+insert	food	cake	40
+insert	food	hamburger	70
+insert	food	sandwich	50
+insert	food	icecream	25
+insert	electronics	usb charger	300
 printAllItems
-updateData	music	bass	250
-printItem	music	bass
-insert	food	chips	45
-insert	food	chicken	60
-insert	sports	dumbbell	200
-remove	sports	dumbbell
-printAllItemsInCategory	sports
-insert	clothes	sweatshirt	100
-insert	clothes	socks	25
-insert	clothes	jean	125
-insert	clothes	tie	35
-printAllItemsInCategory	clothes
-remove	clothes	sweatshirt
-printItem	clothes	sweatshirt
-printAllItems
-find	music	electric guitar
+remove	food	icecream
+updateData	food	hamburger	80
+printAllItemsInCategory	food
+printItem	electronics	refrigerator
 find	clothes	tie
+insert	sports	dumbbell	200
+insert	sports	ball	150
+insert	clothes	jean	200
+remove	clothes	jean
+printAllItems
+printAllItemsInCategory	clothes

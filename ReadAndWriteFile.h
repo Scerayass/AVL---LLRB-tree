@@ -2,9 +2,11 @@
 #define FOURTHASSIGNMENT_READANDWRITEFILE_H
 
 
+#include <string>
+using namespace std;
 class ReadAndWriteFile {
 public:
-    void execute();
+    void execute(string inputFileName,string outputFileName);
 };
 
 

@@ -4,6 +4,6 @@
 
 int main() {
     ReadAndWriteFile file;
-    file.execute();
+    file.execute("input.txt","output.txt");
     return 0;
 }
