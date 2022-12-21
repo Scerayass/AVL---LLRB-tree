@@ -6,7 +6,7 @@
 using namespace std;
 class ReadAndWriteFile {
 public:
-    void execute(string inputFileName,string outputFileName);
+    void execute(string inputFileName,string outputFileName1 , string outputFileName);
 };
 
 

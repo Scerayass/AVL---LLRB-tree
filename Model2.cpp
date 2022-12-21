@@ -1,6 +1,8 @@
+#include <iostream>
 #include "Model2.h"
-
+using namespace std;
 secondaryNode *Model2::insert(primaryNode *head, secondaryNode * secondaryHead ,  string nodeName, int nodeData) {
+    cout << nodeName << endl;
     if(secondaryHead == NULL){
         secondaryNode* newNode = new secondaryNode(nodeName,nodeData);
         return newNode;

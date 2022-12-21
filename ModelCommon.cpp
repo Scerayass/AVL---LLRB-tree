@@ -26,7 +26,7 @@ void ModelCommon::insert(vector<string> vector) {
         findBST(head,vector.at(1));
 
         tempNode->model1Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
-        tempNode->model2Secondary = model1->insert(tempNode,tempNode->model1Secondary ,vector.at(2),stoi(vector.at(3)) );
+        tempNode->model2Secondary = model2->insert(tempNode,tempNode->model2Secondary ,vector.at(2),stoi(vector.at(3)) );
         tempNode->model2Secondary->color = false;
 
         tempNode = NULL;
@@ -55,10 +55,10 @@ void ModelCommon::printSecondaries222(secondaryNode* head){
 
 }
 
-
 void ModelCommon::remove(vector<string> vector) {
     findBST(head,vector.at(1));
     tempNode->model1Secondary = model1->remove(tempNode,tempNode->model1Secondary,vector.at(2));
+    //
     tempNode = NULL;
 }
 
@@ -67,6 +67,7 @@ primaryNode *ModelCommon::findBST(primaryNode *head,string name) {
     if (head == NULL){
         primaryNode* newNode = new primaryNode(name);
         newNode->model1Secondary = NULL;
+        newNode->model2Secondary = NULL;
 
         tempNode = newNode;
         return newNode;
@@ -106,12 +107,17 @@ secondaryNode* ModelCommon::findSecondary(secondaryNode* head,string name){
 
 }
 
-void ModelCommon::printAllItemsInCategory(primaryNode* head,string nodeString) {
+void ModelCommon::printAllItemsInCategory(primaryNode* head,string nodeString,ofstream &outputFile , int modelNumber) {
     findBST(head,nodeString);
 
 
     outputFile << "\""<<  nodeString << "\":";
-    printSecondaries(tempNode->model1Secondary);
+    if(modelNumber == 1){
+        printSecondaries(tempNode->model1Secondary,outputFile);
+    }else if (modelNumber == 2){
+        printSecondaries(tempNode->model2Secondary,outputFile);
+    }
+
     tempNode = NULL;
 
 
@@ -127,10 +133,15 @@ void ModelCommon::updateData(primaryNode* head , string primaryString , string s
     tempSecondaryNode = NULL;
 }
 
-void ModelCommon::printItem(primaryNode* head , string primaryString , string secondaryString) {
+void ModelCommon::printItem(primaryNode* head , string primaryString , string secondaryString,ofstream &outputFile , int modelNumber) {
 
     findBST(head,primaryString);
-    findSecondary(tempNode->model1Secondary,secondaryString);
+    if(modelNumber == 1){
+        findSecondary(tempNode->model1Secondary,secondaryString);
+    }else if(modelNumber == 2){
+        findSecondary(tempNode->model2Secondary,secondaryString);
+    }
+
 
     if(tempSecondaryNode == NULL){
         return;
@@ -141,10 +152,10 @@ void ModelCommon::printItem(primaryNode* head , string primaryString , string se
     tempSecondaryNode = NULL;
 }
 
-void ModelCommon::find(primaryNode* head , string primaryString , string secondaryString) {
+void ModelCommon::find(primaryNode* head , string primaryString , string secondaryString,ofstream &outputFile) {
 
 }
-void ModelCommon::printAllItems(primaryNode *head) {
+void ModelCommon::printAllItems(primaryNode *head ,ofstream &outputFile , int modelNumber) {
 
     if (!head){
 
@@ -161,7 +172,13 @@ void ModelCommon::printAllItems(primaryNode *head) {
             cout << temp->name << " ";
             primaryQueue.pop();
             outputFile << "\""<<  temp->name << "\":";
-            printSecondaries(temp->model1Secondary);
+            if(modelNumber == 1){
+                printSecondaries(temp->model1Secondary,outputFile);
+            }else if (modelNumber == 2){
+                printSecondaries(temp->model2Secondary,outputFile);
+            }
+
+
             if(temp->left != NULL){
 
                 primaryQueue.push(temp->left);
@@ -176,7 +193,7 @@ void ModelCommon::printAllItems(primaryNode *head) {
     }
 }
 
-void ModelCommon::printSecondaries(secondaryNode *node) {
+void ModelCommon::printSecondaries(secondaryNode *node ,ofstream &outputFile) {
 
     if (!node){
         outputFile << "{}\n";
