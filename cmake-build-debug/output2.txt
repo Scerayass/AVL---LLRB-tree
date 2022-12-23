@@ -1,64 +1,45 @@
 command:printAllItems
 {
-"music":
-	"drum":"250"
-	"bass":"200","piano":"300"
-	"guitar":"150"
-	
+"electronics":
+	"refrigerator":"13000"
+	"computer":"15000","usb charger":"300"
+	"telephone":"30000"
 "food":
-	"nachos":"55"
-	"fish":"30","tacos":"60"
-	
+	"pizza":"80"
+	"cookie":"35","sandwich":"50"
+	"cake":"40","icecream":"25","salad":"30"
+	"hamburger":"70"
 }
-command:printItem	music	bass
+command:printAllItemsInCategory food
 {
-"music":
-	"bass":"200"
+"food":
+	"pizza":"80"
+	"cookie":"35","sandwich":"50"
+	"cake":"40","hamburger":"70","salad":"30"
 }
-command:printAllItemsInCategory sports
+command:printItem	electronics	refrigerator
 {
+"electronics":
+	"refrigerator":"13000"
+}
+command:find	clothes	tie
+{}
+command:printAllItems
+{
+"electronics":
+	"refrigerator":"13000"
+	"computer":"15000","usb charger":"300"
+	"telephone":"30000"
+"clothes":{}
+"food":
+	"pizza":"80"
+	"cookie":"35","sandwich":"50"
+	"cake":"40","hamburger":"70","salad":"30"
 "sports":
 	"dumbbell":"200"
-	
+	"ball":"150"
 }
 command:printAllItemsInCategory clothes
 {
-"clothes":
-	"socks":"25"
-	"jean":"125","tie":"35"
-	"sweatshirt":"100"
-	
-}
-command:printItem	clothes	sweatshirt
-{
-"clothes":
-	"sweatshirt":"100"
-}
-command:printAllItems
-{
-"music":
-	"drum":"250"
-	"bass":"200","piano":"300"
-	"guitar":"150"
-	
-"food":
-	"nachos":"55"
-	"chips":"45","tacos":"60"
-	"chicken":"60","fish":"30"
-	
-"sports":
-	"dumbbell":"200"
-	
-"clothes":
-	"socks":"25"
-	"jean":"125","tie":"35"
-	"sweatshirt":"100"
-	
-}
-command:find	music	electric guitar
-{}
-command:find	clothes	tie
-{
-"clothes":
-	"tie":"35"
+"clothes":{}
 }

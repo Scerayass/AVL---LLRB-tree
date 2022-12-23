@@ -34,31 +34,12 @@ void ModelCommon::insert(vector<string> vector) {
 
 }
 
-void ModelCommon::printAllItems222(primaryNode *head) {
-    if ( !head ){
-        return;
-    }
-
-    cout << head->name << " --- ";
-    printSecondaries222(head->model1Secondary);
-    cout << endl;
-    printAllItems222(head->left);
-    printAllItems222(head->right);
-}
-void ModelCommon::printSecondaries222(secondaryNode* head){
-    if(!head){
-        return;
-    }
-    cout << head->name << " , ";
-    printSecondaries222(head->left);
-    printSecondaries222(head->right);
-
-}
 
 void ModelCommon::remove(vector<string> vector) {
     findBST(head,vector.at(1));
+    // sending to AVL and LLRBL tree
     tempNode->model1Secondary = model1->remove(tempNode,tempNode->model1Secondary,vector.at(2));
-    //
+    tempNode->model2Secondary = model2->remove(tempNode,tempNode->model2Secondary,vector.at(2)  ,"icecream");
     tempNode = NULL;
 }
 
@@ -153,7 +134,7 @@ void ModelCommon::printItem(primaryNode* head , string primaryString , string se
 }
 
 void ModelCommon::find(primaryNode* head , string primaryString , string secondaryString,ofstream &outputFile) {
-
+    // it is same with printItem that's why im using printItem
 }
 void ModelCommon::printAllItems(primaryNode *head ,ofstream &outputFile , int modelNumber) {
 
@@ -166,10 +147,10 @@ void ModelCommon::printAllItems(primaryNode *head ,ofstream &outputFile , int mo
     primaryQueue.push(head);
     while(primaryQueue.empty() == false){
         int count = primaryQueue.size();
-        cout << count << endl;
+        //cout << count << endl;
         while( count > 0 ){
             primaryNode* temp = primaryQueue.front();
-            cout << temp->name << " ";
+            //cout << temp->name << " ";
             primaryQueue.pop();
             outputFile << "\""<<  temp->name << "\":";
             if(modelNumber == 1){
@@ -177,7 +158,6 @@ void ModelCommon::printAllItems(primaryNode *head ,ofstream &outputFile , int mo
             }else if (modelNumber == 2){
                 printSecondaries(temp->model2Secondary,outputFile);
             }
-
 
             if(temp->left != NULL){
 
@@ -189,7 +169,7 @@ void ModelCommon::printAllItems(primaryNode *head ,ofstream &outputFile , int mo
             }
             count--;
         }
-        cout << endl;
+        //cout << endl;
     }
 }
 
@@ -199,16 +179,16 @@ void ModelCommon::printSecondaries(secondaryNode *node ,ofstream &outputFile) {
         outputFile << "{}\n";
         return ;
     }
-    outputFile << "\n\t";
+    //outputFile << "\n\t";
     queue<secondaryNode*> secondaryQueue;
     secondaryQueue.push(node);
     while(secondaryQueue.empty() == false){
         int count = secondaryQueue.size();
-
+        outputFile << "\n\t";
         while( count > 0 ){
             secondaryNode* temp = secondaryQueue.front();
-            cout << temp->name << " ";
-            cout  << count << "  aspodjapoajs";
+            //cout << temp->name << " ";
+            //cout  << count << "  aspodjapoajs";
             secondaryQueue.pop();
             outputFile << "\""<<  temp->name << "\":\"" << temp->data << "\"";
             if(count > 1){
@@ -224,8 +204,8 @@ void ModelCommon::printSecondaries(secondaryNode *node ,ofstream &outputFile) {
             }
             count--;
         }
-        outputFile << "\n\t";
-        cout << endl;
+        //outputFile << "\n\t";
+        //cout << endl;
     }
     outputFile << "\n";
 

@@ -2,7 +2,7 @@
 #include "Model1.h"
 
 secondaryNode* Model1::insert(primaryNode *head, secondaryNode * secondaryHead ,  string nodeName, int nodeData) {
-
+    // insertion to AVL tree
     if(secondaryHead == NULL){
 
         secondaryNode* newNode = new secondaryNode(nodeName,nodeData);
@@ -12,7 +12,6 @@ secondaryNode* Model1::insert(primaryNode *head, secondaryNode * secondaryHead ,
     }else if(secondaryHead->name == nodeName){
         return secondaryHead;
     }
-
     const char* nodeString = secondaryHead->name.c_str();
     const char* nameString = nodeName.c_str();
 
@@ -40,24 +39,20 @@ secondaryNode* Model1::insert(primaryNode *head, secondaryNode * secondaryHead ,
     if(balanceValue < -1 && lexicographical_compare(rightNodeString,rightNodeString+100,nameString,nameString+100)){
         return rotateLeft(secondaryHead);
     }
-
     if(balanceValue > 1 && lexicographical_compare(leftNodeString,leftNodeString+100,nameString,nameString+100)){
 
         secondaryHead->left = rotateLeft(secondaryHead->left);
         return rotateRight(secondaryHead);
     }
-
     if(balanceValue < -1 && lexicographical_compare(nameString,nameString+100,rightNodeString,rightNodeString+100)){
 
         secondaryHead->right = rotateRight(secondaryHead->right);
         return rotateLeft(secondaryHead);
     }
-
-
     return secondaryHead;
 }
 
-int Model1::maxHeight(secondaryNode *node1 , secondaryNode* node2){
+int Model1::maxHeight(secondaryNode *node1 , secondaryNode* node2){ // finds the maxHeight of tree
     if (node1 == NULL && node2 == NULL){
         return 0;
     }else if ( node1 != NULL){
@@ -68,7 +63,7 @@ int Model1::maxHeight(secondaryNode *node1 , secondaryNode* node2){
 }
 
 
-int Model1::isBalanced(secondaryNode* node){
+int Model1::isBalanced(secondaryNode* node){ // chechking if tree is balanced or  not
     int nodeLeftHeight;
     int nodeRightHeight;
 
@@ -188,7 +183,5 @@ secondaryNode *Model1::remove(primaryNode *head, secondaryNode *secondaryHead, s
         secondaryHead->right = rotateRight(secondaryHead->right);
         return rotateLeft(secondaryHead);
     }
-
-
     return secondaryHead;
 }
